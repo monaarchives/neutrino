@@ -7,12 +7,12 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/monaarchives/monad/chaincfg"
-	"github.com/monaarchives/monad/chaincfg/chainhash"
-	"github.com/monaarchives/monautil/gcs"
-	"github.com/monaarchives/monautil/gcs/builder"
-	"github.com/monaarchives/monawallet/walletdb"
-	_ "github.com/monaarchives/monawallet/walletdb/bdb"
+	"github.com/monasuite/monad/chaincfg"
+	"github.com/monasuite/monad/chaincfg/chainhash"
+	"github.com/monasuite/monautil/gcs"
+	"github.com/monasuite/monautil/gcs/builder"
+	"github.com/monasuite/monawallet/walletdb"
+	_ "github.com/monasuite/monawallet/walletdb/bdb"
 )
 
 func createTestDatabase() (func(), FilterDatabase, error) {

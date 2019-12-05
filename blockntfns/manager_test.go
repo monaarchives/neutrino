@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/monaarchives/monad/wire"
+	"github.com/monasuite/monad/wire"
 	"github.com/monaarchives/neutrino/blockntfns"
 )
 

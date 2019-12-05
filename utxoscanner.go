@@ -6,9 +6,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/monaarchives/monad/chaincfg/chainhash"
-	"github.com/monaarchives/monautil"
-	"github.com/monaarchives/monawallet/waddrmgr"
+	"github.com/monasuite/monad/chaincfg/chainhash"
+	"github.com/monasuite/monautil"
+	"github.com/monaarchives/neutrino/headerfs"
 )
 
 // getUtxoResult is a simple pair type holding a spend report and error.
@@ -80,7 +80,7 @@ func (r *GetUtxoRequest) Result(cancel <-chan struct{}) (*SpendReport, error) {
 // UtxoScannerConfig exposes configurable methods for interacting with the blockchain.
 type UtxoScannerConfig struct {
 	// BestSnapshot returns the block stamp of the current chain tip.
-	BestSnapshot func() (*waddrmgr.BlockStamp, error)
+	BestSnapshot func() (*headerfs.BlockStamp, error)
 
 	// GetBlockHash returns the block hash at given height in main chain.
 	GetBlockHash func(height int64) (*chainhash.Hash, error)

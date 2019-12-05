@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/monaarchives/monad/chaincfg/chainhash"
-	"github.com/monaarchives/monawallet/walletdb"
+	"github.com/monasuite/monad/chaincfg/chainhash"
+	"github.com/monasuite/monawallet/walletdb"
 )
 
 var (

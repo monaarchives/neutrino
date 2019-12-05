@@ -3,11 +3,11 @@ package filterdb
 import (
 	"fmt"
 
-	"github.com/monaarchives/monad/chaincfg"
-	"github.com/monaarchives/monad/chaincfg/chainhash"
-	"github.com/monaarchives/monautil/gcs"
-	"github.com/monaarchives/monautil/gcs/builder"
-	"github.com/monaarchives/monawallet/walletdb"
+	"github.com/monasuite/monad/chaincfg"
+	"github.com/monasuite/monad/chaincfg/chainhash"
+	"github.com/monasuite/monautil/gcs"
+	"github.com/monasuite/monautil/gcs/builder"
+	"github.com/monasuite/monawallet/walletdb"
 )
 
 var (

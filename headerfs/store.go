@@ -7,15 +7,29 @@ import (
 	"os"
 	"path/filepath"
 	"sync"
+	"time"
 
-	"github.com/monaarchives/monad/blockchain"
-	"github.com/monaarchives/monad/chaincfg"
-	"github.com/monaarchives/monad/chaincfg/chainhash"
-	"github.com/monaarchives/monad/wire"
-	"github.com/monaarchives/monautil/gcs/builder"
-	"github.com/monaarchives/monawallet/waddrmgr"
-	"github.com/monaarchives/monawallet/walletdb"
+	"github.com/monasuite/monad/blockchain"
+	"github.com/monasuite/monad/chaincfg"
+	"github.com/monasuite/monad/chaincfg/chainhash"
+	"github.com/monasuite/monad/wire"
+	"github.com/monasuite/monautil/gcs/builder"
+	"github.com/monasuite/monawallet/walletdb"
 )
+
+// BlockStamp represents a block, identified by its height and time stamp in
+// the chain. We also lift the timestamp from the block header itself into this
+// struct as well.
+type BlockStamp struct {
+	// Height is the height of the target block.
+	Height int32
+
+	// Hash is the hash that uniquely identifies this block.
+	Hash chainhash.Hash
+
+	// Timestamp is the timestamp of the block in the chain.
+	Timestamp time.Time
+}
 
 // BlockHeaderStore is an interface that provides an abstraction for a generic
 // store for block headers.
@@ -60,7 +74,7 @@ type BlockHeaderStore interface {
 	// disconnects the latest block header from the end of the main chain.
 	// The information about the new header tip after truncation is
 	// returned.
-	RollbackLastBlock() (*waddrmgr.BlockStamp, error)
+	RollbackLastBlock() (*BlockStamp, error)
 }
 
 // headerBufPool is a pool of bytes.Buffer that will be re-used by the various
@@ -81,7 +95,7 @@ var headerBufPool = sync.Pool{
 type headerStore struct {
 	mtx sync.RWMutex
 
-	filePath string
+	fileName string
 
 	file *os.File
 
@@ -122,7 +136,7 @@ func newHeaderStore(db walletdb.DB, filePath string,
 	}
 
 	return &headerStore{
-		filePath:    filePath,
+		fileName:    flatFileName,
 		file:        headerFile,
 		headerIndex: index,
 	}, nil
@@ -306,7 +320,7 @@ func (h *blockHeaderStore) HeightFromHash(hash *chainhash.Hash) (uint32, error) 
 // information about the new header tip after truncation is returned.
 //
 // NOTE: Part of the BlockHeaderStore interface.
-func (h *blockHeaderStore) RollbackLastBlock() (*waddrmgr.BlockStamp, error) {
+func (h *blockHeaderStore) RollbackLastBlock() (*BlockStamp, error) {
 	// Lock store for write.
 	h.mtx.Lock()
 	defer h.mtx.Unlock()
@@ -336,7 +350,7 @@ func (h *blockHeaderStore) RollbackLastBlock() (*waddrmgr.BlockStamp, error) {
 		return nil, err
 	}
 
-	return &waddrmgr.BlockStamp{
+	return &BlockStamp{
 		Height: int32(chainTipHeight) - 1,
 		Hash:   prevHeaderHash,
 	}, nil
@@ -596,7 +610,8 @@ type FilterHeaderStore struct {
 // FilterHeaderStore, then the initial genesis filter header will need to be
 // inserted.
 func NewFilterHeaderStore(filePath string, db walletdb.DB,
-	filterType HeaderType, netParams *chaincfg.Params) (*FilterHeaderStore, error) {
+	filterType HeaderType, netParams *chaincfg.Params,
+	headerStateAssertion *FilterHeader) (*FilterHeaderStore, error) {
 
 	fStore, err := newHeaderStore(db, filePath, filterType)
 	if err != nil {
@@ -655,6 +670,25 @@ func NewFilterHeaderStore(filePath string, db walletdb.DB,
 		return fhs, nil
 	}
 
+	// If we have a state assertion then we'll check it now to see if we
+	// need to modify our filter header files before we proceed.
+	if headerStateAssertion != nil {
+		reset, err := fhs.maybeResetHeaderState(
+			headerStateAssertion,
+		)
+		if err != nil {
+			return nil, err
+		}
+
+		// If the filter header store was reset, we'll re-initialize it
+		// to recreate our on-disk state.
+		if reset {
+			return NewFilterHeaderStore(
+				filePath, db, filterType, netParams, nil,
+			)
+		}
+	}
+
 	// As a final initialization step, we'll ensure that the header tip
 	// within the flat files, is in sync with out database index.
 	tipHash, tipHeight, err := fhs.chainTip()
@@ -691,6 +725,42 @@ func NewFilterHeaderStore(filePath string, db walletdb.DB,
 	// TODO(roasbeef): make above into func
 
 	return fhs, nil
+}
+
+// maybeResetHeaderState will reset the header state if the header assertion
+// fails, but only if the target height is found. The boolean returned indicates
+// that header state was reset.
+func (f *FilterHeaderStore) maybeResetHeaderState(
+	headerStateAssertion *FilterHeader) (bool, error) {
+
+	// First, we'll attempt to locate the header at this height. If no such
+	// header is found, then we'll exit early.
+	assertedHeader, err := f.FetchHeaderByHeight(
+		headerStateAssertion.Height,
+	)
+	if _, ok := err.(*ErrHeaderNotFound); ok {
+		return false, nil
+	}
+	if err != nil {
+		return false, err
+	}
+
+	// If our on disk state and the provided header assertion don't match,
+	// then we'll purge this state so we can sync it anew once we fully
+	// start up.
+	if *assertedHeader != headerStateAssertion.FilterHash {
+		// Close the file before removing it. This is required by some
+		// OS, e.g., Windows.
+		if err := f.file.Close(); err != nil {
+			return true, err
+		}
+		if err := os.Remove(f.fileName); err != nil {
+			return true, err
+		}
+		return true, nil
+	}
+
+	return false, nil
 }
 
 // FetchHeader returns the filter header that corresponds to the passed block
@@ -833,7 +903,7 @@ func (f *FilterHeaderStore) ChainTip() (*chainhash.Hash, uint32, error) {
 // re-org which disconnects the latest filter header from the end of the main
 // chain. The information about the latest header tip after truncation is
 // returned.
-func (f *FilterHeaderStore) RollbackLastBlock(newTip *chainhash.Hash) (*waddrmgr.BlockStamp, error) {
+func (f *FilterHeaderStore) RollbackLastBlock(newTip *chainhash.Hash) (*BlockStamp, error) {
 	// Lock store for write.
 	f.mtx.Lock()
 	defer f.mtx.Unlock()
@@ -862,7 +932,7 @@ func (f *FilterHeaderStore) RollbackLastBlock(newTip *chainhash.Hash) (*waddrmgr
 	}
 
 	// TODO(roasbeef): return chain hash also?
-	return &waddrmgr.BlockStamp{
+	return &BlockStamp{
 		Height: int32(newHeightTip),
 		Hash:   *newHeaderTip,
 	}, nil

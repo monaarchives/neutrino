@@ -3,7 +3,7 @@ package pushtx_test
 import (
 	"testing"
 
-	"github.com/monaarchives/monad/wire"
+	"github.com/monasuite/monad/wire"
 	"github.com/monaarchives/neutrino/pushtx"
 )
 

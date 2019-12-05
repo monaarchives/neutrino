@@ -1,14 +1,15 @@
 package neutrino
 
 import (
-
-	"github.com/monaarchives/monad/addrmgr"
-	"github.com/monaarchives/monad/blockchain"
-	"github.com/monaarchives/monad/peer"
-	"github.com/monaarchives/monad/txscript"
 	"github.com/btcsuite/btclog"
+	"github.com/monasuite/monad/addrmgr"
+	"github.com/monasuite/monad/blockchain"
+	"github.com/monasuite/monad/connmgr"
+	"github.com/monasuite/monad/peer"
+	"github.com/monasuite/monad/txscript"
 	"github.com/monaarchives/neutrino/blockntfns"
 	"github.com/monaarchives/neutrino/pushtx"
+	"github.com/monaarchives/neutrino/query"
 )
 
 // log is a logger that is initialized with no output filters.  This
@@ -38,6 +39,8 @@ func UseLogger(logger btclog.Logger) {
 	addrmgr.UseLogger(logger)
 	blockntfns.UseLogger(logger)
 	pushtx.UseLogger(logger)
+	connmgr.UseLogger(logger)
+	query.UseLogger(logger)
 }
 
 // logClosure is used to provide a closure over expensive logging operations so

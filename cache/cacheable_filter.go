@@ -1,8 +1,8 @@
 package cache
 
 import (
-	"github.com/monaarchives/monad/chaincfg/chainhash"
-	"github.com/monaarchives/monautil/gcs"
+	"github.com/monasuite/monad/chaincfg/chainhash"
+	"github.com/monasuite/monautil/gcs"
 	"github.com/monaarchives/neutrino/filterdb"
 )
 
