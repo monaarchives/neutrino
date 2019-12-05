@@ -1,4 +1,4 @@
-module github.com/wakiyamap/neutrino
+module github.com/monaarchives/neutrino
 
 require (
 	cloud.google.com/go v0.38.0 // indirect
@@ -12,9 +12,9 @@ require (
 	github.com/lightningnetwork/lnd/queue v1.0.1
 	github.com/onsi/ginkgo v1.8.0 // indirect
 	github.com/onsi/gomega v1.5.0 // indirect
-	github.com/wakiyamap/monad v0.0.0-20190506050331-00ef2fc6ccc4
-	github.com/wakiyamap/monautil v0.0.0-20190427085431-0b7aac242e96
-	github.com/wakiyamap/monawallet v0.0.0-20190505005950-bae29c6dd296
+	github.com/monaarchives/monad v0.0.0-20190506050331-00ef2fc6ccc4
+	github.com/monaarchives/monautil v0.0.0-20190427085431-0b7aac242e96
+	github.com/monaarchives/monawallet v0.0.0-20190505005950-bae29c6dd296
 	golang.org/x/crypto v0.0.0-20190426145343-a29dc8fdc734 // indirect
 	golang.org/x/exp v0.0.0-20190429183610-475c5042d3f1 // indirect
 	golang.org/x/image v0.0.0-20190501045829-6d32002ffd75 // indirect

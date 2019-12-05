@@ -3,7 +3,7 @@ cache:
   directories:
     - $GOCACHE
     - $GOPATH/pkg/mod
-    - $GOPATH/src/github.com/wakiyamap
+    - $GOPATH/src/github.com/monaarchives
     - $GOPATH/src/github.com/golang
     - $GOPATH/src/gopkg.in/alecthomas
 go:
@@ -11,10 +11,10 @@ go:
 sudo: false
 install:
   - export PATH=$PATH:$PWD/linux-amd64/
-  - mkdir -p $GOPATH/src/github.com/wakiyamap/
-  - go get -d github.com/wakiyamap/monad
-  - pushd $GOPATH/src/github.com/wakiyamap/monad
-  - $GOPATH/src/github.com/wakiyamap/neutrino/btcd_checkout.sh
+  - mkdir -p $GOPATH/src/github.com/monaarchives/
+  - go get -d github.com/monaarchives/monad
+  - pushd $GOPATH/src/github.com/monaarchives/monad
+  - $GOPATH/src/github.com/monaarchives/neutrino/btcd_checkout.sh
   - go install . ./cmd/...
   - popd
 env:

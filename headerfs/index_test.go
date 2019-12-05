@@ -7,8 +7,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/wakiyamap/monawallet/walletdb"
-	_ "github.com/wakiyamap/monawallet/walletdb/bdb"
+	"github.com/monaarchives/monawallet/walletdb"
+	_ "github.com/monaarchives/monawallet/walletdb/bdb"
 )
 
 func createTestIndex() (func(), *headerIndex, error) {

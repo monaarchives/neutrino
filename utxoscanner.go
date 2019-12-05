@@ -6,9 +6,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/wakiyamap/monad/chaincfg/chainhash"
-	"github.com/wakiyamap/monautil"
-	"github.com/wakiyamap/monawallet/waddrmgr"
+	"github.com/monaarchives/monad/chaincfg/chainhash"
+	"github.com/monaarchives/monautil"
+	"github.com/monaarchives/monawallet/waddrmgr"
 )
 
 // getUtxoResult is a simple pair type holding a spend report and error.

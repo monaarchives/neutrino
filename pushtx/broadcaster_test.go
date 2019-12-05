@@ -4,8 +4,8 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/wakiyamap/monad/wire"
-	"github.com/wakiyamap/neutrino/blockntfns"
+	"github.com/monaarchives/monad/wire"
+	"github.com/monaarchives/neutrino/blockntfns"
 )
 
 // createTx is a helper method to create random transactions that spend

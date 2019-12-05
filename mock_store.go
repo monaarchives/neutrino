@@ -3,11 +3,11 @@ package neutrino
 import (
 	"fmt"
 
-	"github.com/wakiyamap/monad/blockchain"
-	"github.com/wakiyamap/monad/chaincfg/chainhash"
-	"github.com/wakiyamap/monad/wire"
-	"github.com/wakiyamap/monawallet/waddrmgr"
-	"github.com/wakiyamap/neutrino/headerfs"
+	"github.com/monaarchives/monad/blockchain"
+	"github.com/monaarchives/monad/chaincfg/chainhash"
+	"github.com/monaarchives/monad/wire"
+	"github.com/monaarchives/monawallet/waddrmgr"
+	"github.com/monaarchives/neutrino/headerfs"
 )
 
 // mockBlockHeaderStore is an implementation of the BlockHeaderStore backed by

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/wakiyamap/monad/wire"
+	"github.com/monaarchives/monad/wire"
 )
 
 // BroadcastErrorCode uniquely identifies the broadcast error.

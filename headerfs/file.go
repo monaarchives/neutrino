@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/wakiyamap/monad/chaincfg/chainhash"
-	"github.com/wakiyamap/monad/wire"
+	"github.com/monaarchives/monad/chaincfg/chainhash"
+	"github.com/monaarchives/monad/wire"
 )
 
 // appendRaw appends a new raw header to the end of the flat file.

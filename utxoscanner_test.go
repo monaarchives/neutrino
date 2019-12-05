@@ -7,11 +7,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/wakiyamap/monad/chaincfg/chainhash"
-	"github.com/wakiyamap/monad/wire"
-	"github.com/wakiyamap/monautil"
-	"github.com/wakiyamap/monautil/gcs"
-	"github.com/wakiyamap/monawallet/waddrmgr"
+	"github.com/monaarchives/monad/chaincfg/chainhash"
+	"github.com/monaarchives/monad/wire"
+	"github.com/monaarchives/monautil"
+	"github.com/monaarchives/monautil/gcs"
+	"github.com/monaarchives/monawallet/waddrmgr"
 )
 
 type MockChainClient struct {

@@ -2,13 +2,13 @@ package neutrino
 
 import (
 
-	"github.com/wakiyamap/monad/addrmgr"
-	"github.com/wakiyamap/monad/blockchain"
-	"github.com/wakiyamap/monad/peer"
-	"github.com/wakiyamap/monad/txscript"
+	"github.com/monaarchives/monad/addrmgr"
+	"github.com/monaarchives/monad/blockchain"
+	"github.com/monaarchives/monad/peer"
+	"github.com/monaarchives/monad/txscript"
 	"github.com/btcsuite/btclog"
-	"github.com/wakiyamap/neutrino/blockntfns"
-	"github.com/wakiyamap/neutrino/pushtx"
+	"github.com/monaarchives/neutrino/blockntfns"
+	"github.com/monaarchives/neutrino/pushtx"
 )
 
 // log is a logger that is initialized with no output filters.  This

@@ -6,10 +6,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/wakiyamap/monad/chaincfg/chainhash"
-	"github.com/wakiyamap/monad/wire"
-	"github.com/wakiyamap/monawallet/wtxmgr"
-	"github.com/wakiyamap/neutrino/blockntfns"
+	"github.com/monaarchives/monad/chaincfg/chainhash"
+	"github.com/monaarchives/monad/wire"
+	"github.com/monaarchives/monawallet/wtxmgr"
+	"github.com/monaarchives/neutrino/blockntfns"
 )
 
 var (

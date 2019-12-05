@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/wakiyamap/monad/wire"
-	"github.com/wakiyamap/neutrino/blockntfns"
+	"github.com/monaarchives/monad/wire"
+	"github.com/monaarchives/neutrino/blockntfns"
 )
 
 var emptyHeader wire.BlockHeader

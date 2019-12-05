@@ -1,8 +1,8 @@
 package neutrino
 
 import (
-	"github.com/wakiyamap/monad/chaincfg/chainhash"
-	"github.com/wakiyamap/monad/wire"
+	"github.com/monaarchives/monad/chaincfg/chainhash"
+	"github.com/monaarchives/monad/wire"
 )
 
 // batchSpendReporter orchestrates the delivery of spend reports to

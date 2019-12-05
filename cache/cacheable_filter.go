@@ -1,9 +1,9 @@
 package cache
 
 import (
-	"github.com/wakiyamap/monad/chaincfg/chainhash"
-	"github.com/wakiyamap/monautil/gcs"
-	"github.com/wakiyamap/neutrino/filterdb"
+	"github.com/monaarchives/monad/chaincfg/chainhash"
+	"github.com/monaarchives/monautil/gcs"
+	"github.com/monaarchives/neutrino/filterdb"
 )
 
 // FilterCacheKey represents the key used to access filters in the FilterCache.

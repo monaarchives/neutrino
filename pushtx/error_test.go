@@ -3,8 +3,8 @@ package pushtx_test
 import (
 	"testing"
 
-	"github.com/wakiyamap/monad/wire"
-	"github.com/wakiyamap/neutrino/pushtx"
+	"github.com/monaarchives/monad/wire"
+	"github.com/monaarchives/neutrino/pushtx"
 )
 
 // TestParseBroadcastErrorCode ensures that we properly construct a

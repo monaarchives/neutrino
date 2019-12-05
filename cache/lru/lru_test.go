@@ -5,7 +5,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/wakiyamap/neutrino/cache"
+	"github.com/monaarchives/neutrino/cache"
 )
 
 func assertEqual(t *testing.T, a interface{}, b interface{}, message string) {

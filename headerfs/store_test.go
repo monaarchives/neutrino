@@ -13,10 +13,10 @@ import (
 	"time"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/wakiyamap/monad/chaincfg"
-	"github.com/wakiyamap/monad/chaincfg/chainhash"
-	"github.com/wakiyamap/monad/wire"
-	"github.com/wakiyamap/monawallet/walletdb"
+	"github.com/monaarchives/monad/chaincfg"
+	"github.com/monaarchives/monad/chaincfg/chainhash"
+	"github.com/monaarchives/monad/wire"
+	"github.com/monaarchives/monawallet/walletdb"
 )
 
 func createTestBlockHeaderStore() (func(), walletdb.DB, string,
