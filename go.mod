@@ -7,7 +7,6 @@ require (
 	github.com/google/btree v1.0.0 // indirect
 	github.com/google/go-cmp v0.3.0 // indirect
 	github.com/google/pprof v0.0.0-20190502144155-8358a9778bd1 // indirect
-	github.com/hashicorp/golang-lru v0.5.1 // indirect
 	github.com/lightningnetwork/lnd/queue v1.0.1
 	github.com/monasuite/monawallet/wallet/txauthor v1.0.0
 	github.com/monasuite/monawallet/walletdb v1.1.0
