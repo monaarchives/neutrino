@@ -6,7 +6,7 @@ import (
 	"sync"
 
 	"github.com/monaarchives/neutrino/cache"
-s)
+)
 
 // elementMap is an alias for a map from a generic interface to a list.Element.
 type elementMap map[interface{}]*list.Element
