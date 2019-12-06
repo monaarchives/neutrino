@@ -1,8 +1,8 @@
 package neutrino
 
 import (
-	"github.com/monaarchives/monad/chaincfg/chainhash"
-	"github.com/monaarchives/monad/wire"
+	"github.com/monasuite/monad/chaincfg/chainhash"
+	"github.com/monasuite/monad/wire"
 )
 
 // batchSpendReporter orchestrates the delivery of spend reports to

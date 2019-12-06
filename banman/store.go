@@ -8,7 +8,7 @@ import (
 	"net"
 	"time"
 
-	"github.com/monaarchives/btcwallet/walletdb"
+	"github.com/monasuite/monawallet/walletdb"
 )
 
 var (

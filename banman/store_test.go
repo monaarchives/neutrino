@@ -8,9 +8,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/monaarchives/btcwallet/walletdb"
-	_ "github.com/monaarchives/btcwallet/walletdb/bdb"
-	"github.com/monasuite/neutrino/banman"
+	"github.com/monasuite/monawallet/walletdb"
+	_ "github.com/monasuite/monawallet/walletdb/bdb"
+	"github.com/monaarchives/neutrino/banman"
 )
 
 // createTestBanStore creates a test Store backed by a boltdb instance.

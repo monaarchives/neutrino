@@ -22,13 +22,13 @@ import (
 	"github.com/monasuite/monautil"
 	"github.com/monasuite/monawallet/waddrmgr"
 	"github.com/monasuite/monawallet/walletdb"
-	"github.com/monasuite/neutrino/banman"
-	"github.com/monasuite/neutrino/blockntfns"
-	"github.com/monasuite/neutrino/cache/lru"
-	"github.com/monasuite/neutrino/filterdb"
-	"github.com/monasuite/neutrino/headerfs"
-	"github.com/monasuite/neutrino/pushtx"
-	"github.com/monasuite/neutrino/query"
+	"github.com/monaarchives/neutrino/banman"
+	"github.com/monaarchives/neutrino/blockntfns"
+	"github.com/monaarchives/neutrino/cache/lru"
+	"github.com/monaarchives/neutrino/filterdb"
+	"github.com/monaarchives/neutrino/headerfs"
+	"github.com/monaarchives/neutrino/pushtx"
+	"github.com/monaarchives/neutrino/query"
 )
 
 // These are exported variables so they can be changed by users.

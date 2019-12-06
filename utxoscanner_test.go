@@ -7,11 +7,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/monaarchives/monad/chaincfg/chainhash"
-	"github.com/monaarchives/monad/wire"
-	"github.com/monaarchives/monautil"
-	"github.com/monaarchives/monautil/gcs"
-	"github.com/monasuite/neutrino/headerfs"
+	"github.com/monasuite/monad/chaincfg/chainhash"
+	"github.com/monasuite/monad/wire"
+	"github.com/monasuite/monautil"
+	"github.com/monasuite/monautil/gcs"
+	"github.com/monaarchives/neutrino/headerfs"
 )
 
 type MockChainClient struct {

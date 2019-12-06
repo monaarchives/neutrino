@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/monaarchives/monad/chaincfg/chainhash"
-	"github.com/monaarchives/monad/wire"
+	"github.com/monasuite/monad/chaincfg/chainhash"
+	"github.com/monasuite/monad/wire"
 )
 
 // ErrHeaderNotFound is returned when a target header on disk (flat file) can't

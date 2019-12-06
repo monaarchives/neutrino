@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/monaarchives/monad/wire"
+	"github.com/monasuite/monad/wire"
 )
 
 // BroadcastErrorCode uniquely identifies the broadcast error.

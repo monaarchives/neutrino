@@ -3,7 +3,7 @@ package blockntfns
 import (
 	"fmt"
 
-	"github.com/monaarchives/monad/wire"
+	"github.com/monasuite/monad/wire"
 )
 
 // BlockNtfn is an interface that coalesces all the different types of block
