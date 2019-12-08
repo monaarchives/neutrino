@@ -21,7 +21,7 @@ var filterHeaderCheckpoints = map[wire.BitcoinNet]map[uint32]*chainhash.Hash{
 	chaincfg.MainNetParams.Net: map[uint32]*chainhash.Hash{},
 
 	// Testnet filter header checkpoints.
-	chaincfg.TestNet3Params.Net: map[uint32]*chainhash.Hash{},
+	chaincfg.TestNet4Params.Net: map[uint32]*chainhash.Hash{},
 }
 
 // ControlCFHeader controls the given filter header against our list of

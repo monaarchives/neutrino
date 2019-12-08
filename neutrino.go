@@ -20,7 +20,6 @@ import (
 	"github.com/monasuite/monad/peer"
 	"github.com/monasuite/monad/wire"
 	"github.com/monasuite/monautil"
-	"github.com/monasuite/monawallet/waddrmgr"
 	"github.com/monasuite/monawallet/walletdb"
 	"github.com/monaarchives/neutrino/banman"
 	"github.com/monaarchives/neutrino/blockntfns"

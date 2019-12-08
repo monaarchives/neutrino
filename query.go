@@ -15,7 +15,6 @@ import (
 	"github.com/monasuite/monautil/gcs/builder"
 	monablockchain "github.com/monasuite/monad/blockchain"
 	monawire "github.com/monasuite/monad/wire"
-	monautil "github.com/monasuite/monautil"
 	"github.com/monaarchives/neutrino/cache"
 	"github.com/monaarchives/neutrino/filterdb"
 	"github.com/monaarchives/neutrino/pushtx"

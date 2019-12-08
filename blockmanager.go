@@ -22,7 +22,6 @@ import (
 	"github.com/monasuite/monautil/gcs/builder"
 	monablockchain "github.com/monasuite/monad/blockchain"
 	monawire "github.com/monasuite/monad/wire"
-	monautil "github.com/monasuite/monautil"
 	"github.com/monaarchives/neutrino/banman"
 	"github.com/monaarchives/neutrino/blockntfns"
 	"github.com/monaarchives/neutrino/chainsync"
